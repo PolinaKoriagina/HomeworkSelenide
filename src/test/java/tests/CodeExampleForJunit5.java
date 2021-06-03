@@ -12,7 +12,6 @@ public class CodeExampleForJunit5 {
     @BeforeAll
     static void setUp() {
         Configuration.startMaximized = true;
-        Configuration.browser = "chrome";
     }
 
     @Test
@@ -24,12 +23,10 @@ public class CodeExampleForJunit5 {
         // - Перейдите в раздел Wiki проекта
         $("[data-tab-item=\"i4wiki-tab\"]").click();
         // - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        $(byText("Show 1 more pages…")).scrollTo().click();
+        $(byText("Show 1 more pages…")).click();
         // - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
-        $x(("//a[contains(text(),'SoftAssertions')]"))
-                .click();
+        $(byText("SoftAssertions")).click();
         $("#wiki-body").shouldHave(text("Using JUnit5 extend test class:"));
-        System.out.println("The test is complete!");
 
     }
 }
